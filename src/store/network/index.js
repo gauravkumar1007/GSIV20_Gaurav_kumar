@@ -9,18 +9,18 @@ const defaultHeader = {
 export default ({method = "GET", headers = defaultHeader, url = config.NETWORK_URL, uri = "", params, body}) => {
     let obj = {
         method,
-        url: url + uri,
+        url: url + uri + `?api_key=${config.API_KEY}`,
         headers,
         withCredentials: true
     }
 
-    if(params){
-        obj.params = params;
+    // check for params is object
+    if(params === Object(params)){
+        for(let key in params){
+            // append the parameters in url as  aquery parameter
+            obj.url+= `&&${key}=${params[key]}`;
+        }
     } 
-
-    if(body) {
-        obj.data = body;
-    }
 
     let xhr = new XMLHttpRequest();
     xhr.open(method, obj.url);

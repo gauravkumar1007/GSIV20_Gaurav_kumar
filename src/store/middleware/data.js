@@ -1,6 +1,6 @@
 import networkFetch from "../network";
 import { FETCH_DATA } from "../action/types";
-
+import { fullPageLoader } from "../action"
 import { getProp } from "../../Utility";
 
 export function fetchData(store) {
@@ -22,7 +22,7 @@ export function fetchData(store) {
                         });
                     } else {
                         // show global loading
-
+                        store.dispatch(fullPageLoader({showFullPageLoading: true, opacity: 0}));
                     }
                     return networkFetch({
                         ...action.payload
@@ -32,6 +32,7 @@ export function fetchData(store) {
                             /* will be handled with setting data in reducer */
                         } else {
                             // hide global loading
+                            store.dispatch(fullPageLoader({showFullPageLoading: false}));
                         }
                         
                         let _data = JSON.parse(response);
