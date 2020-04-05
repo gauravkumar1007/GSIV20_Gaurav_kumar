@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import config from "../../Config";
 
 const defaultHeader = {
@@ -27,8 +27,7 @@ export default ({method = "GET", headers = defaultHeader, url = config.NETWORK_U
     xhr.send();
     return new Promise(async (resolve, reject) => {
         xhr.onload = function() {
-            console.log("xhr :-",xhr);
-            if (xhr.status != 200) { // analyze HTTP status of the response
+            if (xhr.status !== 200) { // analyze HTTP status of the response
                 console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
                 return reject(xhr.status)
             } else { // show the result

@@ -1,11 +1,11 @@
-import React, {Fragment} from "react";
+import React from "react";
 import * as uuid from "uuid";
 import { connect } from "react-redux";
 
 import Header from "../Header";
 import {fetchData,removeData} from "../store/action";
 import MovieCard from "../components/MovieCard";
-import InfiniteScroll from "../components/InfiniteScroll";
+// import InfiniteScroll from "../components/InfiniteScroll";
 import {debounce} from "../Utility";
 
 const UniqueId = uuid.v4();
@@ -18,7 +18,6 @@ class Home extends React.Component{
 		this.loadData = this.loadData.bind(this);
 		this.loadMore = this.loadMore.bind(this);
 		this.onCardTap = this.onCardTap.bind(this);
-		this.limit = 14;
 		this.page = 1;
 		this.query = "";
 	}

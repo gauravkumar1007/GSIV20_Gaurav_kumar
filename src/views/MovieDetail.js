@@ -1,4 +1,4 @@
-import React, {Fragment,useEffect} from "react";
+import React from "react";
 import * as uuid from "uuid";
 import { connect } from "react-redux";
 
@@ -26,17 +26,17 @@ class MovieDetail extends React.Component{
     }
 
 	loadData(){
-		const {uniqueId,fetchData,match: {params}} = this.props;
+		const {fetchData,match: {params}} = this.props;
 		const {movieId} = params;
 		fetchData({
 	        uniqueId: UniqueId,
 	        method:'GET',
-			uri: `/3/movie/${movieId}`,
+			uri: `/3/movie/${movieId}`
 	    });
 	}
 
     render(){
-    	const {data,dataProps={}} = this.props;
+    	const {data} = this.props;
 
     	if(!data){
             return null;
@@ -48,7 +48,6 @@ class MovieDetail extends React.Component{
 			poster_path,
 			vote_average,
 			release_date,
-			content_length,
 			runtime,
 			director="Director", // Unable to find from the api response
 			cast=["Actor 1", "Actor 2"]
@@ -58,7 +57,8 @@ class MovieDetail extends React.Component{
             <Header title="Movie Details"/>
         	<section id="infinite-list" className="wrapper">
         		<div className="movie_poster full_width">
-        		</div>
+					<img height="200px" src={poster_path} alt={title}/>
+				</div>
         		<div className="movie_detail_wrapper full_width">
         			<div style={{marginBottom:5}}>
 						<span style={{color:"#4A4A4A",fontSize:16,fontWeight:600}}>{title}</span>

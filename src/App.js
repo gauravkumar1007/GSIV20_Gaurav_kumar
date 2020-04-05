@@ -1,6 +1,5 @@
 import React from 'react';
-import {Provider, connect} from "react-redux";
-import * as uuid from "uuid";
+import {Provider} from "react-redux";
 import {
   BrowserRouter as Router,
   Route,

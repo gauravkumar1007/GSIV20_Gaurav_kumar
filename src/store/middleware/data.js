@@ -8,7 +8,7 @@ export function fetchData(store) {
         return function (action) {
             switch (action.type) {
                 case FETCH_DATA: {
-                    const {ownLoading,append,uniqueId,responseDataId} = action.payload;
+                    const {ownLoading,append,responseDataId} = action.payload;
                     if(ownLoading || append){
                         const extraProps = {};
                         if(append){

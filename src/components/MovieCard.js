@@ -6,7 +6,7 @@ import { cutString } from "../Utility";
 const MovieCard = ({id,title,poster_path,overview,vote_average}) => (
 	<div data-movie={id} className="card">
 	    <div data-movie={id} className="card_image">
-	      <img width="150px" height="160px" src={poster_path}/>
+	      <img width="150px" height="160px" src={poster_path} alt={title}/>
 	    </div>
 	    <div data-movie={id} className="card_details">
 	      <div data-movie={id} className="card_info">
@@ -19,6 +19,7 @@ const MovieCard = ({id,title,poster_path,overview,vote_average}) => (
 );
 
 MovieCard.propTypes = {
+	id:PropTypes.number,
     title:PropTypes.string,
 	poster_path:PropTypes.string,
 	overview:PropTypes.string,
